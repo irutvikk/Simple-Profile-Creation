@@ -8,12 +8,15 @@ class HomescreenProvider extends ChangeNotifier {
   TextEditingController _email = TextEditingController();
   TextEditingController _password = TextEditingController();
 
+  bool _showsnackbar = false;
+
   File? _selectedimage;
   String? _emailerror;
   String? _passerror;
   bool _hidepass = true;
   bool _savingflag = false;
 
+  bool get showsnackbar => _showsnackbar;
   bool get savingflag => _savingflag;
   bool get ishidepass => _hidepass;
   File? get selectedimage => _selectedimage;
@@ -22,6 +25,20 @@ class HomescreenProvider extends ChangeNotifier {
 
   TextEditingController get email => _email;
   TextEditingController get password => _password;
+
+  void shoowsnackbar(bool value,BuildContext context) {
+    _showsnackbar = value;
+    if(_showsnackbar){
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Saved successfully!'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+      _showsnackbar = false;
+    }
+    notifyListeners();
+  }
 
   Future<void> pickImage() async {
     final picker = ImagePicker();
@@ -58,7 +75,7 @@ class HomescreenProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> saveToSharedPreferences(String email,String password, String imagepath) async {
+  Future<bool> saveToSharedPreferences(String email,String password, String imagepath) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     if ((email.isNotEmpty && email.endsWith('@gmail.com')) && password.isNotEmpty && password.length > 6 && _selectedimage != null) {
@@ -66,9 +83,12 @@ class HomescreenProvider extends ChangeNotifier {
       prefs.setString('password', _password.text);
       prefs.setString('image_path', _selectedimage!.path);
       print("saved to sharepref");
+      return true;
     } else {
       print('Fields cannot be null');
+      return false;
     }
+
   }
 
   Future<void> loaddata() async {

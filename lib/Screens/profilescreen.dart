@@ -114,7 +114,9 @@ class Profilepage extends StatelessWidget {
                     child: GestureDetector(
                       onTap:  () {
                         value.emailpassvalidator(value.email.text,value.password.text);
-                        value.saveToSharedPreferences(value.email.text,value.password.text,value.selectedimage!.path);
+                        value.saveToSharedPreferences(value.email.text,value.password.text,value.selectedimage!.path).then((values) {
+                          value.shoowsnackbar(values,context);
+                        });
                       },
                       child: Container(
                         decoration: BoxDecoration(
