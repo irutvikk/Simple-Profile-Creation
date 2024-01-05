@@ -15,7 +15,7 @@ class Homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     HomescreenProvider homescreenProvider = Provider.of<HomescreenProvider>(context, listen: false);
     TodosProvider todosProvider = Provider.of<TodosProvider>(context, listen: false);
-    homescreenProvider.initializeFromSharedPreferences();
+    homescreenProvider.loaddata();
     return Scaffold(
       backgroundColor: Colors.white,
             body: SizedBox(

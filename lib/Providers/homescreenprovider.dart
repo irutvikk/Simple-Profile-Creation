@@ -1,6 +1,6 @@
 import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -61,7 +61,7 @@ class HomescreenProvider extends ChangeNotifier {
   Future<void> saveToSharedPreferences(String email,String password, String imagepath) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    if ((email.isNotEmpty && email.endsWith('@gmail.com')) || password.isNotEmpty && password.length > 6 && _selectedimage != null) {
+    if ((email.isNotEmpty && email.endsWith('@gmail.com')) && password.isNotEmpty && password.length > 6 && _selectedimage != null) {
       prefs.setString('email', _email.text);
       prefs.setString('password', _password.text);
       prefs.setString('image_path', _selectedimage!.path);
@@ -71,7 +71,7 @@ class HomescreenProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> initializeFromSharedPreferences() async {
+  Future<void> loaddata() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     String? useremail = prefs.getString('email');
@@ -85,6 +85,7 @@ class HomescreenProvider extends ChangeNotifier {
       _selectedimage = File(userimagepath);
 
       print("==${_email.text}\n===${_password.text}\n==${userimagepath}=============");
+
     }
     notifyListeners();
   }

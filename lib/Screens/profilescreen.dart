@@ -83,6 +83,9 @@ class Profilepage extends StatelessWidget {
                           labelText: "Enter Password",
                           errorText: value.errorpassword,
                           suffixIcon: GestureDetector(
+                            onTap: () {
+                              value.togglepass();
+                            },
                             child: Icon(
                               value.ishidepass ? Icons.visibility : Icons.visibility_off,
                             ),
