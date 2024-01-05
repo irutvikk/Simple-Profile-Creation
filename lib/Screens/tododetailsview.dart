@@ -25,7 +25,7 @@ class Tododetailsviewpage extends StatelessWidget {
             SizedBox(height: 20.sp,),
             Text("completed : ${todosdata["completed"]}"),
             SizedBox(height: 20.sp,),
-            Text("userid : ${todosdata["userid"]}"),
+            Text("userid : ${todosdata["userId"]}"),
           ],
         ),
       ),
