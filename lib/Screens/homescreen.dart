@@ -45,6 +45,9 @@ class Homepage extends StatelessWidget {
                                     radius: 25.r,
                                     backgroundColor: Colors.blue,
                                     backgroundImage: value.selectedimage != null ? FileImage(value.selectedimage!) : null,
+                                    child: value.selectedimage == null
+                                        ? const Icon(Icons.camera)
+                                        : null,
                                   );
                                 },
                               ),
