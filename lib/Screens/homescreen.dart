@@ -94,7 +94,10 @@ class Homepage extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(10.r)
                                     ),
                                     alignment: Alignment.center,
-                                    child: Text("${todosProvider.todosdata["todos"][index]["todo"]}"),
+                                    child: Padding(
+                                      padding: EdgeInsets.all(10.sp),
+                                      child: Text("${todosProvider.todosdata["todos"][index]["todo"]}"),
+                                    ),
                                   ),
                                 ),
                               );
