@@ -1,12 +1,11 @@
 import 'dart:io';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomescreenProvider extends ChangeNotifier {
-  TextEditingController _email = TextEditingController();
-  TextEditingController _password = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
 
   bool _showsnackbar = false;
 
@@ -14,10 +13,8 @@ class HomescreenProvider extends ChangeNotifier {
   String? _emailerror;
   String? _passerror;
   bool _hidepass = true;
-  bool _savingflag = false;
 
   bool get showsnackbar => _showsnackbar;
-  bool get savingflag => _savingflag;
   bool get ishidepass => _hidepass;
   File? get selectedimage => _selectedimage;
   String? get erroremail => _emailerror;
