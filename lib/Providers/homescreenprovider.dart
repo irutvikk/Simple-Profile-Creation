@@ -101,7 +101,7 @@ class HomescreenProvider extends ChangeNotifier {
       _password.text = userpass;
       _selectedimage = File(userimagepath);
 
-      print("==${_email.text}\n===${_password.text}\n==${userimagepath}=============");
+      print("==${_email.text}\n===${_password.text}\n==$userimagepath=============");
 
     }
     notifyListeners();

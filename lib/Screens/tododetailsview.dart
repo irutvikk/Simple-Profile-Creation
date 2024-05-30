@@ -1,9 +1,16 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Tododetailsviewpage extends StatelessWidget {
-  var todosdata;
-  Tododetailsviewpage(this.todosdata);
+class Tododetailsviewpage extends StatefulWidget {
+  final todosdata;
+  const Tododetailsviewpage({super.key, required this.todosdata});
+
+  @override
+  State<Tododetailsviewpage> createState() => _TododetailsviewpageState();
+}
+
+class _TododetailsviewpageState extends State<Tododetailsviewpage> {
 
   @override
   Widget build(BuildContext context) {
@@ -19,16 +26,47 @@ class Tododetailsviewpage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("id : ${todosdata["id"]}"),
-            SizedBox(height: 20.sp,),
-            Text("todo : ${todosdata["todo"]}"),
-            SizedBox(height: 20.sp,),
-            Text("completed : ${todosdata["completed"]}"),
-            SizedBox(height: 20.sp,),
-            Text("userid : ${todosdata["userId"]}"),
+            if (1 == 1)
+              const Center(
+                child: CircularProgressIndicator(color: Colors.black),
+              ),
+            const SizedBox(
+              height: 10,
+            ),
+            MaterialButton(
+              onPressed: () async {
+                dynamic j;
+                dynamic k = await compute(heavyTask, j);
+                print(k['status']);
+                // await heavyTask(100000000000);
+                print("completed task");
+              },
+              child: const Text("Click to Compute"),
+            ),
+            Text("id : ${widget.todosdata["id"]}"),
+            SizedBox(
+              height: 20.sp,
+            ),
+            Text("todo : ${widget.todosdata["todo"]}"),
+            SizedBox(
+              height: 20.sp,
+            ),
+            Text("completed : ${widget.todosdata["completed"]}"),
+            SizedBox(
+              height: 20.sp,
+            ),
+            Text("userid : ${widget.todosdata["userId"]}"),
           ],
         ),
       ),
     );
   }
+}
+
+Future<dynamic> heavyTask(dynamic k) async {
+  double l = 20;
+  for (int i = 0; i <= 1000000000; i++) {
+    l = i + l;
+  }
+  return {"status": true};
 }

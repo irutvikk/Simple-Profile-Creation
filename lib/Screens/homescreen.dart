@@ -84,7 +84,7 @@ class Homepage extends StatelessWidget {
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                      return Tododetailsviewpage(todosProvider.todosdata["todos"][index]);
+                                      return Tododetailsviewpage(todosdata: todosProvider.todosdata["todos"][index]);
                                     },));
                                   },
                                   child: Container(

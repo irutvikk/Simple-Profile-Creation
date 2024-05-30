@@ -6,9 +6,6 @@ import 'package:simpleprofilecreation/Providers/todosprovider.dart';
 import 'package:simpleprofilecreation/Screens/homescreen.dart';
 import 'Providers/homescreenprovider.dart';
 
-
-//TODO: APF file is in github repo
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations(
@@ -27,7 +24,7 @@ Future<void> main() async {
               create: (context) => HomescreenProvider(),
             ),
           ],
-          child: MaterialApp(
+          child: const MaterialApp(
             debugShowCheckedModeBanner: false,
             home: Homepage()
             // home: Homepage()
