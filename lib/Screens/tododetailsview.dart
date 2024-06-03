@@ -35,11 +35,13 @@ class _TododetailsviewpageState extends State<Tododetailsviewpage> {
             ),
             MaterialButton(
               onPressed: () async {
+                
                 dynamic j;
                 dynamic k = await compute(heavyTask, j);
                 print(k['status']);
                 // await heavyTask(100000000000);
                 print("completed task");
+
               },
               child: const Text("Click to Compute"),
             ),
